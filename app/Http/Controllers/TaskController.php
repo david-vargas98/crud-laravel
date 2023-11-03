@@ -31,9 +31,15 @@ class TaskController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        //Validaciones, lo que venga en la $request se quiere que se valide con las siguientes reglas:
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+        
         //Aquí es donde se implementa la lógica para crear en la base de datos
         Task::create($request->all()); //Se crea el registro mediante asignación masiva (Massive asignment)
-        return redirect()->route("tasks.index"); //Se redirige al index 
+        return redirect()->route("tasks.index")->with('success', 'Nueva tarea creada exitosamente'); //Se redirige al index 
     }
 
     /**
