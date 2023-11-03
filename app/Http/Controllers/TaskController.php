@@ -12,7 +12,6 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
         return view("index");
     }
 
@@ -21,7 +20,8 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        //Este método se usa para mostrar la vista del formulario que se usará para crear
+        return view("create");
     }
 
     /**
