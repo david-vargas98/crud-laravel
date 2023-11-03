@@ -29,7 +29,9 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Aquí es donde se implementa la lógica para crear en la base de datos
+        Task::create($request->all()); //Se crea el registro mediante asignación masiva (Massive asignment)
+        return redirect()->route("tasks.index"); //Se redirige al index 
     }
 
     /**
