@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class TaskController extends Controller
 {
@@ -27,7 +29,7 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         //Aquí es donde se implementa la lógica para crear en la base de datos
         Task::create($request->all()); //Se crea el registro mediante asignación masiva (Massive asignment)
