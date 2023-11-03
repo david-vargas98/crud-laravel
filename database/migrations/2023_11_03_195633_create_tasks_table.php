@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('descripcion');
+            $table->text('description');
             $table->dateTime('due_date')->nullable(); //Fecha límite en que se ejecuta, nullable para permitir nulos
             $table->enum('status', ['Pendiente', 'En progreso', 'Completada'])->nullable(); //Almacena status de cada tarea
             $table->timestamps();
