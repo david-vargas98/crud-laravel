@@ -11,10 +11,17 @@
         </div>
     </div>
 
-    {{-- Se agrega mensaje --}}
+    {{-- Se agrega mensaje para la creación --}}
     @if (Session::get('success'))
         <div class="alert alert-success mt-2">
             <strong>{{Session::get('success')}}</strong><br>
+        </div>
+    @endif
+
+    {{-- Se agrega mensaje para la modificación --}}
+    @if (Session::get('updated'))
+        <div class="alert alert-warning mt-2">
+            <strong>{{Session::get('updated')}}</strong><br>
         </div>
     @endif
 
