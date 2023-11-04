@@ -79,8 +79,10 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Task $task)
+    public function destroy(Task $task): RedirectResponse
     {
-        //
+        //Simplemente se borra XD
+        $task->delete();
+        return redirect()->route("tasks.index")->with('deleted', 'Tarea eliminada exitosamente'); //Se redirige al index
     }
 }
