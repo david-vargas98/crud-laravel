@@ -14,7 +14,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view("index");
+        //En esta variable se va a almacenar todos los registros de tareas en orden descendente (último al primero)
+        $tasks = Task::latest()->get(); //Y esto se pasa a la vista index:
+        return view("index", compact('tasks'));
     }
 
     /**
