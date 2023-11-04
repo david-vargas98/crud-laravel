@@ -47,6 +47,7 @@
                 </tr>
             @endforeach
         </table>
+        {{$tasks->links()}}  {{-- Esto se usa para hacer suo del paginador --}}
     </div>
 </div>
 @endsection
