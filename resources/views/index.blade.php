@@ -25,6 +25,13 @@
         </div>
     @endif
 
+    {{-- Se agrega mensaje para la eliminación --}}
+    @if (Session::get('deleted'))
+        <div class="alert alert-danger mt-2">
+            <strong>{{Session::get('deleted')}}</strong><br>
+        </div>
+    @endif
+
     <div class="col-12 mt-4">
         <table class="table table-bordered text-white">
             <tr class="text-secondary">
@@ -47,7 +54,9 @@
                 <td>
                     <a href="" class="btn btn-warning">Editar</a>
 
-                    <form action="" method="post" class="d-inline">
+                    <form action="{{route('tasks.destroy', $task)}}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
                         <button type="submit" class="btn btn-danger">Eliminar</button>
                     </form>
                 </td>
