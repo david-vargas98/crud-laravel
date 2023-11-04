@@ -41,7 +41,7 @@ class TaskController extends Controller
         
         //Aquí es donde se implementa la lógica para crear en la base de datos
         Task::create($request->all()); //Se crea el registro mediante asignación masiva (Massive asignment)
-        return redirect()->route("tasks.index")->with('success', 'Nueva tarea creada exitosamente'); //Se redirige al index 
+        return redirect()->route("tasks.index")->with('success', 'Nueva tarea creada exitosamente'); //Se redirige al index
     }
 
     /**
@@ -57,16 +57,23 @@ class TaskController extends Controller
      */
     public function edit(Task $task): view
     {
-        //
-        return view('edit');
+        //Se retorna la vista y el objeto se envía en la variable
+        return view('edit', compact('task'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, Task $task): RedirectResponse
     {
-        //
+        //Valiación:
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+        //La tarea que se está mandando se quiere actualizar con los siguientes datos
+        $task->update($request->all());
+        return redirect()->route("tasks.index")->with('updated', 'Tarea actualizada exitosamente'); //Se redirige al index
     }
 
     /**
