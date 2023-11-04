@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
 class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         //En esta variable se va a almacenar todos los registros de tareas en orden descendente (último al primero)
         $tasks = Task::latest()->paginate(3); //Y esto se pasa a la vista index:
@@ -22,7 +22,7 @@ class TaskController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         //Este método se usa para mostrar la vista del formulario que se usará para crear
         return view("create");
