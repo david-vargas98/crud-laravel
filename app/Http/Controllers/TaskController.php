@@ -55,9 +55,10 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Task $task)
+    public function edit(Task $task): view
     {
         //
+        return view('edit');
     }
 
     /**
